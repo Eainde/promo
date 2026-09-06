@@ -13,6 +13,7 @@ import re
 
 from docx import Document
 from docx.enum.section import WD_SECTION
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -21,6 +22,10 @@ from docx.shared import Inches, Pt, RGBColor
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "panellist_brief.md")
 OUT = os.path.join(HERE, "Panellist_Brief_Akshay_Dipta.docx")
+
+# False = leave a labelled empty box where each screenshot goes, so the images
+# can be pasted in by hand. Flip to True to embed the files again.
+EMBED_IMAGES = False
 
 DB_BLUE = RGBColor(0x00, 0x18, 0x50)
 DB_ACCENT = RGBColor(0x00, 0x53, 0x9F)
@@ -61,6 +66,38 @@ def add_runs(paragraph, text, base_bold=False, size=None, color=None):
         if color is not None:
             run.font.color.rgb = color
     return paragraph
+
+
+def add_placeholder(doc, index, rel, caption):
+    """Empty labelled box to paste a screenshot into, plus its caption."""
+    table = doc.add_table(rows=1, cols=1)
+    table.style = "Table Grid"
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    cell = table.cell(0, 0)
+    shade(cell, "F4F6FA")
+    cell.width = Inches(6.1)
+    table.rows[0].height = Inches(1.6)
+
+    p = cell.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_before = Pt(24)
+    p.paragraph_format.space_after = Pt(4)
+    add_runs(p, "SCREENSHOT %d GOES HERE" % index, base_bold=True, size=11, color=DB_ACCENT)
+
+    p2 = cell.add_paragraph()
+    p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p2.paragraph_format.space_after = Pt(24)
+    add_runs(p2, os.path.basename(rel), size=9, color=GREY)
+    for run in p2.runs:
+        run.font.name = "Consolas"
+
+    cap = doc.add_paragraph()
+    cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cap.paragraph_format.space_before = Pt(4)
+    cap.paragraph_format.space_after = Pt(12)
+    add_runs(cap, caption, size=8.5, color=GREY)
+    for run in cap.runs:
+        run.italic = True
 
 
 def heading(doc, text, level):
@@ -127,6 +164,7 @@ def build():
              size=8, color=GREY)
 
     i = 0
+    img_index = 0
     missing = []
     pending_break = False
     first_block = True
@@ -155,7 +193,10 @@ def build():
         if m:
             caption, rel = m.group(1), m.group(2)
             path = os.path.normpath(os.path.join(HERE, rel))
-            if os.path.exists(path):
+            img_index += 1
+            if not EMBED_IMAGES:
+                add_placeholder(doc, img_index, rel, caption)
+            elif os.path.exists(path):
                 p = doc.add_paragraph()
                 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 p.paragraph_format.space_before = Pt(8)
@@ -230,7 +271,8 @@ def build():
         i += 1
 
     doc.save(OUT)
-    print("wrote %s" % OUT)
+    print("wrote %s (%d screenshot %s)"
+          % (OUT, img_index, "slots" if not EMBED_IMAGES else "images"))
     if missing:
         print("WARNING missing images:")
         for rel in missing:
