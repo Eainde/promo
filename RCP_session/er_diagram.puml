@@ -1,0 +1,100 @@
+@startuml
+!theme plain
+skinparam backgroundColor #0D1B2A
+skinparam defaultFontColor #CCCCCC
+skinparam defaultFontName Consolas
+skinparam defaultFontSize 13
+
+skinparam entity {
+  BackgroundColor #1B2A41
+  BorderColor #0096D6
+  FontColor #FFFFFF
+  FontSize 14
+  AttributeFontSize 12
+  AttributeFontColor #CCCCCC
+  StereotypeFontColor #999999
+}
+
+skinparam arrow {
+  Color #0096D6
+  FontColor #FFB74D
+  FontSize 12
+}
+
+entity "AI_CHAT_PROMPT" as prompt #1B2A41;line:FFB74D {
+  * **CW_PROMPT_CODE** : VARCHAR2(50) <<PK>>
+  * **PROMPT_VERSION** : NUMBER <<PK>>
+  --
+  * FUNCTION_CODE : VARCHAR2(150) <<FK>>
+  * CW_STEP_CODE : VARCHAR2(50) <<FK>>
+  CW_PROMPT_TEXT : CLOB
+  SYSTEM_INSTRUCTION : CLOB
+  CW_MODEL_NAME : VARCHAR2(100)
+  CW_TEMPERATURE : NUMBER
+  CW_TOP_P / CW_TOP_K : NUMBER
+  CW_MAX_OUTPUT_TOKENS : NUMBER
+  CW_CALL_TIMEOUT_MILLIS : NUMBER
+  CW_THINKING_BUDGET : NUMBER
+  CW_SEED : NUMBER
+  CW_RESPONSE_SCHEMA : CLOB
+  CRITIC_LOOPS : NUMBER
+  DEFAULT_PROMPT_VERSION : CHAR(1)
+}
+
+entity "AI_CHAT_WORKFLOW_RUN" as workflow #1B2A41;line:0096D6 {
+  * **CW_RUN_ID** : NUMBER <<PK>>
+  --
+  * FUNCTION_CODE : VARCHAR2(50)
+  * CW_RUN_STATUS : VARCHAR2(50)
+  RUN_COMMENT : VARCHAR2(256)
+  KYC_ID : NUMBER
+  PROFILE_VERSION_ID : NUMBER
+  IS_STBL_KYC : CHAR(1)
+  CREATED_BY : VARCHAR2(128)
+  CREATE_DATE : TIMESTAMP(6)
+  LAST_UPDATED_BY : VARCHAR2(128)
+  LAST_UPDATE_DATE : TIMESTAMP(6)
+}
+
+entity "NEXUS_AI_AGENT_EXECUTIONS" as executions #1B2A41;line:00C97B {
+  * **EXECUTION_ID** : VARCHAR2(64) <<PK>>
+  --
+  * AGENT_ID : VARCHAR2(255)
+  * AGENT_NAME : VARCHAR2(255)
+  RUN_ID : VARCHAR2(255) <<FK>>
+  INVOCATION_ORDER : NUMBER
+  * STATUS : VARCHAR2(20)
+  INPUT_DATA : CLOB
+  OUTPUT_DATA : CLOB
+  ERROR_MESSAGE : CLOB
+  STARTED_AT : TIMESTAMP(6)
+  COMPLETED_AT : TIMESTAMP(6)
+  DURATION_MS : NUMBER
+  --
+  //Token Metrics//
+  INPUT_TOKENS : NUMBER
+  OUTPUT_TOKENS : NUMBER
+  TOTAL_TOKENS : NUMBER
+  CACHED_CONTENT_TOKENS : NUMBER
+  THOUGHTS_TOKENS : NUMBER
+  TOOL_USE_PROMPT_TOKENS : NUMBER
+  LLM_CALL_COUNT : NUMBER
+  TOKEN_USAGE_DETAILS : CLOB
+  PROMPT_VERSION : NUMBER
+}
+
+entity "NEXUS_AI_CHECKPOINT" as checkpoint #1B2A41;line:E84D4D {
+  * **CHECKPOINT_ID** : VARCHAR2(36) <<PK>>
+  --
+  * RUN_ID : VARCHAR2(255) <<FK>>
+  NODE_ID : VARCHAR2(255)
+  NEXT_NODE_ID : VARCHAR2(255)
+  * STATE_DATA : CLOB
+  SAVED_AT : TIMESTAMP(6) WITH TZ
+}
+
+workflow ||--o{ executions : "CW_RUN_ID → RUN_ID\n(1 run : N agent executions)"
+workflow ||--o{ checkpoint : "CW_RUN_ID → RUN_ID\n(1 run : N checkpoints)"
+prompt ||--o{ executions : "PROMPT_VERSION\n(config used per execution)"
+
+@enduml
