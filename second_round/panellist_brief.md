@@ -725,12 +725,12 @@ Post processing was the throughput bottleneck. I moved it to a parallel model, w
 
 ### Evidence
 
-- Contributed to five million euros in savings.
 - Over forty thousand document operations completed with no human involvement.
-- Still owned in production, with active issue resolution this month.
+- Carrying live regulatory volume for every client review on the platform.
+- Still owned in production, with active issue resolution this month, on documents from an external credit reference source and on association behaviour in the fulfilment interface.
 - Chris Ashley, Director, worked with me on the initial build of this platform and is one of my endorsers.
 
-**On attribution of the numbers.** Both figures above describe the documents and state platform as a whole. I am not claiming that the five million euros or the forty thousand operations are attributable to automatic association on its own, and if you ask me to split them out I cannot.
+**On attribution.** That operations figure describes the documents and state platform as a whole. I am not claiming it for automatic association on its own, and if you ask me to split it out I cannot.
 
 ### Framework mapping
 
@@ -741,7 +741,9 @@ Post processing was the throughput bottleneck. I moved it to a parallel model, w
 
 ### So what
 
-Forty thousand operations that no analyst had to do, on a record that stays accurate on its own rather than because somebody remembered to tidy it. And every artificial intelligence result in sections 5 and 6 is only as trustworthy as the state underneath it, which is the part I own.
+The business puts the saving from this platform at five million euros. That is the end the whole thing was built for, and everything above is how it was earned: forty thousand operations no analyst had to do, on a record that stays accurate on its own rather than because somebody remembered to tidy it.
+
+The second return is the one that is easy to miss. Every artificial intelligence result in sections 5 and 6 is only as trustworthy as the state underneath it, and that state is the part I own.
 
 ---
 
