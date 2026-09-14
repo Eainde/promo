@@ -652,14 +652,27 @@ That last decision is why it got adopted. A recommended pattern gets implemented
 
 I introduced full lifecycle tracing for messages in both the new library and the legacy one. Adding it only to the new one would have left the majority of live traffic dark for as long as the migration took. It found production bugs that had previously been undetectable, because nobody could see where a message stopped.
 
+### Outcomes claimed
+
+- Analyst wait for a state and validity result went from thirty to sixty minutes down to seconds.
+- Daily backlogs in state and validity calculation eliminated.
+- Failed messages recovered automatically instead of being lost.
+- Five hundred thousand messages a day through state validation.
+
 ### Evidence
 
-- Analyst wait time went from thirty to sixty minutes down to seconds.
-- Five hundred thousand messages processed per day in state validation.
-- Daily backlogs in state and validity calculation eliminated.
-- Every message traceable end to end, which found live bugs that were previously invisible.
-- Adopted by multiple teams across the business unit, published as `com.db.clm.kyc:clm-kafka-retry`.
-- I am Component Guardian for this area across teams.
+Each outcome above, and what proves it.
+
+| Claim | Proof | Source |
+|---|---|---|
+| Wait went from 30 to 60 minutes to seconds | Consumer lag chart for the state and validity consumer group, four weeks either side of go live on [DATE] | [DATA: monitoring dashboard screenshot] |
+| Backlogs eliminated | Same chart. Daily lag peaks before, flat line after | [DATA: same screenshot] |
+| Messages no longer lost | Retry table counts over [N] months: failures persisted, recovered on retry, exhausted after max retries | [DATA: query on retry table] |
+| 500,000 messages a day | Topic throughput, thirty day view | [DATA: broker metrics screenshot] |
+| Adopted across the unit | [N] services in [N] teams declare `com.db.clm.kyc:clm-kafka-retry`, [N] released versions | [DATA: artifact repository dependents or code search] |
+| Tracing found hidden bugs | [N] production defects found through lifecycle tracing, e.g. [TICKET]: [one line on what the trace showed] | [LINK: tickets] |
+| I designed and built it | Commit history, [N] of [N] commits mine, design document | [LINK: repository], [LINK: design doc] |
+| Component Guardian | Named owner in the guardian register | [LINK: register entry] |
 
 ### Screenshots and links
 
