@@ -1,6 +1,6 @@
 # VP Promotion Speech - Second Round
 
-Target: 7 minutes. 1,198 spoken words. Round 1 delivered 1,191 words in the same slot, so this is the same length as a speech that already fitted, and it leaves room for questions.
+Target: 7 minutes. 1,195 spoken words. Round 1 delivered 1,191 words in the same slot, so this is the same length as a speech that already fitted, and it leaves room for questions.
 
 ---
 
@@ -30,7 +30,7 @@ The first thing I built on it identifies the senior managers responsible for run
 
 That work used to take seventy seven minutes per case. It now takes under ten. That is more than seven times faster, at over ninety nine and a half percent right first time, and an independent cost analysis put it at fifty seven percent cheaper per case.
 
-I want to be precise about credit. I did not do this alone. Policy specialists defined what a senior manager is under the rules, and Operations, Data, Controls and Transformation all had a hand in it. We went from nothing to live in five months. What I brought was the framework it all runs on, and the first working version of it in our unit.
+I designed the whole thing. The multi agent design is mine, and I wrote every instruction that drives it, working through the rules with the policy specialists. Nothing to live in five months.
 
 In June the bank held its annual technology showcase in India and demonstrated three artificial intelligence applications to the national press. This was one of the three, named in The Hindu.
 
@@ -45,22 +45,28 @@ The second one I own end to end, and it is a genuinely harder problem.
 
 Regulation requires us to establish who ultimately owns and controls a corporate client. An analyst traces ownership upwards through layers of holding companies, funds and trusts, across documents in several languages, applying group policy and the rules of every country involved, and works out the percentages by hand.
 
-That now runs automatically, and it has been live for a hundred users since August.
+> ⚠ **PLACEHOLDER NUMBERS — collect and replace before delivery.** Three to verify: (1) manual minutes per case, (2) minutes now, (3) accuracy measure. Everything else in this section is sourced.
 
-Two things about how I built it. One agent does the work, and a second checks it against seventeen acceptance criteria and sends it back if it fails. The interesting part is what happens when the checker is wrong. If the documents do not support what the reviewer says, the system has to disagree in writing and escalate to a human, rather than quietly changing its answer to make the complaint go away.
+One case took an analyst about two hours. It now takes under fifteen minutes, and it has been live for a hundred users since August. Over ninety five percent of cases come back right first time.
 
-The second is that I treat these instructions as production code, not as prose. There are two hundred and sixty five automated tests on them. When users told me the same case was giving different answers on different days, I did not guess at a fix. I built a harness to measure it first.
+Getting an owner wrong on a client file is a regulatory problem, not an inconvenience, so speed on its own is worthless here. I designed it to mark its own homework against seventeen rules the policy team signed off before any person sees it, and to escalate to a human when the documents genuinely do not give an answer instead of inventing one. Two hundred and sixty five automated tests mean the same client case gives the same answer this month as it did last month. That is what makes the time saving safe to bank.
 
 And I did not just implement what the policy team handed me. I audited it clause by clause, put fifteen written questions back to them, and told them when their own worked examples were wrong. One had the ownership pointing the wrong way. Another had percentages that did not add up to a hundred. They corrected them.
 
 
-## SECTION FOUR. THE FOUNDATIONS.
+## SECTION FOUR. WHAT IT ALL STANDS ON.
 
-None of that runs without the plumbing underneath it, and I built a lot of that too.
+Both of those workflows read documents. Neither works without the layer underneath, and that layer is mine.
 
-Our messaging infrastructure could not handle load. Analysts waited up to an hour for results, and messages were lost permanently on any outage. I rebuilt it. Wait times went to seconds, it handles half a million messages a day, and every message is traceable end to end.
+At the centre is a state machine I built. It works out where every question and every document stands. A question's state decides what evidence we need, and when it is ready to be worked. A document's state decides whether it can be trusted.
 
-On the documents side, I built automatic linking of client documents to the compliance questions they answer, and rebuilt the engine that decides whether an answer is still valid. That contributed to five million euros in savings and over forty thousand document operations with no human involved. I still own it, and I was fixing production issues in it this month.
+On top of that, linking documents to questions was manual. I automated the linking, and the unlinking that everyone forgets, when a newer document supersedes an older one. A missing document is visible. A stale one still looks current, and an auditor cannot tell the difference.
+
+So both workflows only see work my state machine released, and only act on documents it marked good.
+
+That platform contributed five million euros in savings, and forty thousand document operations now run with no human. I still own it, and I was fixing production issues this month.
+
+One layer down, all of it travels over messaging, which could not cope. Analysts waited half an hour for a result. I designed a new library with automatic retry, and the same work now takes seconds, at half a million messages a day.
 
 
 ## SECTION FIVE. BEYOND MY TEAM.

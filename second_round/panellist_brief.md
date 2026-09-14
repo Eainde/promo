@@ -43,7 +43,7 @@ I am a Senior Engineer in the part of the bank that proves it knows who its clie
 
 4. **The second workflow I own end to end, and it is the harder one.** It works out who ultimately owns and controls a corporate client, tracing through layers of holding companies, funds and trusts across documents in several languages. It has been live for a hundred users since August 2026. There are two hundred and sixty five automated tests on it, because I treat the instructions we give artificial intelligence as production code rather than as prose.
 
-5. **I built the foundations underneath all of it and I still own them.** Our messaging infrastructure could not handle load and lost messages permanently on any outage. I rebuilt it. Analyst wait times went from thirty to sixty minutes down to seconds, and it now carries half a million messages a day. On the documents side I built automatic linking of client documents to the compliance questions they answer, which contributed to five million euros of savings. I was fixing production issues in that platform this month.
+5. **Both of those workflows stand on a platform I built, and I still own it.** At the centre of our documents platform is a state machine I built. It calculates the state of every compliance question and of every document, which is what decides when a question is ready to be worked and whether a document can be relied on as evidence. On top of it I built automatic association of documents to the questions they answer, and automatic dissociation when a newer document supersedes an older one. Both live workflows only see work that state machine released, and only act on documents it marked good. The platform has contributed five million euros in savings and over forty thousand document operations with no human involvement. I was fixing production issues in it this month. Underneath all of that, our messaging could not handle load and lost messages permanently on any outage, so I designed a new messaging library with automatic retry. Analyst wait times went from thirty to sixty minutes down to seconds, and it now carries half a million messages a day.
 
 6. **I contribute outside the bank as well as inside it.** I contributed a new integration module to LangChain4j, the open source Java framework our artificial intelligence platform is built on.
 
@@ -57,8 +57,8 @@ I am a Senior Engineer in the part of the bank that proves it knows who its clie
 | Building an artificial intelligence agent | A full working day | About one hour | Nexus AI adoption across the unit |
 | Analyst wait for a calculation result | 30 to 60 minutes | Seconds | Messaging rebuild |
 | Message throughput | Daily backlogs | 500,000 messages a day | Messaging rebuild |
-| Document handling | Manual linking by analysts | 40,000 plus operations with no human involved | Documents and Validity platform |
-| Savings contributed to | | 5 million euros | Documents and Validity platform |
+| Document handling | Manual linking by analysts | 40,000 plus operations with no human involved | Documents and state platform |
+| Savings contributed to | | 5 million euros | Documents and state platform |
 
 **What I am asking you to conclude.** That I operate at the level the Vice President and Senior Engineer role describes. I set technical direction for a business unit rather than for a team, I own solution design and not just delivery, I partner with the business rather than take orders from it, and I have production evidence rather than proposals.
 
@@ -173,6 +173,8 @@ Architecture documentation, authored by me, on the internal wiki:
 `confluence.intranet.db.com/spaces/COB/pages/1964550338/CLM+AI-Driven+Workflow+Framework+Architecture+Documentation`
 
 Source repository: [LINK: Nexus AI repository]
+
+Recorded walkthrough: I presented the framework end to end to 140 colleagues on 11 June 2026. The recording runs 1 hour 24 minutes and the transcript is alongside it. If you would rather watch the architecture argument than read it, that is the fastest route. Recording: [LINK: 11 Jun 2026 session recording]. Transcript: [LINK: session transcript]. Full detail on the session is in section 9.
 
 ![Why the framework is split into two tiers, and the architecture goals it was designed against. This page is the design rationale, written before the code.](../framework/IMG_3486.jpg)
 
@@ -450,6 +452,10 @@ Ross Mackenzie, Co-Head of Operations and Controls for the Corporate Bank and In
 
 The cost and savings analysis was presented to management by Marco Luebbers, a Managing Director, with Tim Ryan.
 
+**At go live, 10 July 2026.** On the week of go live, Ross Mackenzie wrote to the whole accelerator team. He called it "a monumental delivery in the evolution of Deutsche Bank's KYC process, the first agentic workers, that are delivering at a higher level of accuracy and efficiency than could be achieved by human effort", and described it as "a case study in partnership between Technology and Operations". The mail carried the first production numbers, after two days: 258 files processed, maker level accuracy at 91 percent, and no material production issues. Note that the 91 percent there and the over 99.5 percent right first time in the August article are different measures taken seven weeks apart, and the gap between them is the post go live tuning, not a restatement.
+
+Two things about that mail. It was addressed to the accelerator team, not to me personally, and I am one of roughly fifty recipients, so I do not present it as individual recognition. What it does evidence is that the Co-Head of Operations and Controls was engaged with this delivery at go live, and that he closed the mail with "Beneficial Ownership next!", which is the same senior sponsor naming the workflow in section 6 as the next thing the bank wanted. The two live results in this document are a sequence, not two unrelated projects.
+
 ### Screenshots and links
 
 External press, *The Hindu*, 19 June 2026:
@@ -469,6 +475,8 @@ Article on the internal network:
 ![The three applications named. The middle one, AI Acceleration for client senior manager, is this workflow. Denis Roux, Chief Information Officer for the Investment Bank, is quoted above it.](../framework/IMG_4769.jpg)
 
 ![The close of the article, with the quote from Gurumurthy Thiagarajan, Head of the India technology centre, and the scale of the Deutsche India operation.](../framework/IMG_4770.jpg)
+
+![The go live mail from Ross Mackenzie, Co-Head of Operations and Controls, 10 July 2026. Day two production numbers, and the closing line naming beneficial ownership as next. The recipient row has been cropped out, because it carried colleagues' names and email addresses.](../framework/IMG_4785_cropped.jpg)
 
 ![The cost and savings analysis presented by Marco Luebbers and Tim Ryan. Cost per case, the per agent token table across all ten agents, and the three optimisation levers in flight.](../framework/IMG_4751.jpg)
 
@@ -675,27 +683,41 @@ An analyst who waited an hour for a result did something else and came back. Tha
 
 ---
 
-## 8. The Foundations, Documents And Validity
+## 8. The Foundations, Documents And The State Machine
 
 ### The problem
 
-A client review asks a set of compliance questions, and the answers have to be evidenced by documents. Analysts linked documents to the questions they answered by hand, and re-checked by hand whether an existing answer was still valid. It was slow and it was the sort of repetitive work where mistakes are both easy and consequential.
+A client review asks a set of compliance questions, and every answer has to be evidenced by documents. Analysts linked documents to the questions they answered by hand, and re-checked by hand whether an existing answer still held. It was slow and it was the sort of repetitive work where mistakes are both easy and consequential.
+
+This is also the platform the two live results in sections 5 and 6 stand on, which is why it is here and not in an appendix.
 
 ### What I personally did
 
-I designed and built automatic association of documents to questions, and automatic dissociation when a newer valid document supersedes an older one. I redesigned the validity calculation logic, which had been scattered across the codebase, into a centralised state transition framework. I removed the post processing bottleneck with a parallel processing model.
+I built the state machine at the centre of the platform. It calculates the state of every question and of every document. A question's state determines what evidence is required and when that question is ready to be worked. A document's state determines whether the document can be relied on as evidence.
+
+On top of that I designed and built automatic association of documents to questions on upload, and automatic dissociation when a newer valid document supersedes an older one. The validity calculation had grown scattered across the codebase, and I consolidated it into a single state transition framework. I removed the post processing bottleneck with a parallel processing model.
 
 I still own this platform. **I was resolving production issues in it this month**, on documents arriving from an external credit reference source and on automatic association behaviour in the fulfilment interface.
 
+### Why the two live workflows depend on this
+
+Three dependencies, and none of them is decorative.
+
+1. The agents read documents that my association logic placed against the correct question. Without that, there is no reliable mapping from a document to the question it answers.
+2. The work the agents pick up exists because the state machine decided a question was ready to be worked.
+3. The agents act only on documents the state machine has marked good.
+
+Put plainly, both workflows in sections 5 and 6 only ever see work my state machine released, and only ever act on documents it marked good. The artificial intelligence sits on top of this. It does not replace it.
+
 ### The design decisions I owned
 
-**Decision one. Dissociation matters as much as association.**
+**Decision one. State is the contract, not a validity flag.**
+
+The platform does not ask "is this answer still valid" as a one off calculation. It maintains the state of every question and every document, and everything downstream reads that state rather than recomputing its own view. That is what makes it safe for two independent workflows to consume the same record and reach the same conclusion. A scattered validity rule set cannot offer that, because the same question could be answered differently depending on which path reached it.
+
+**Decision two. Dissociation matters as much as association.**
 
 Automatically linking a document to a question is the obvious half. Automatically unlinking one that a newer valid document has superseded is the half that keeps the record accurate. Without it the system accumulates stale evidence that still looks current, which is worse for an auditor than a missing link, because a missing link is visible and a stale one is not.
-
-**Decision two. Centralise state transitions rather than distribute the rules.**
-
-Validity logic had grown scattered across the codebase, which meant the same question could be answered differently depending on which path reached it. I centralised the state transitions into one framework. The value is consistency of outcome, and the fact that a rule change is now made in one place.
 
 **Decision three. Parallelise the post processing.**
 
@@ -708,16 +730,18 @@ Post processing was the throughput bottleneck. I moved it to a parallel model, w
 - Still owned in production, with active issue resolution this month.
 - Chris Ashley, Director, worked with me on the initial build of this platform and is one of my endorsers.
 
+**On attribution of the numbers.** Both figures above describe the documents and state platform as a whole. I am not claiming that the five million euros or the forty thousand operations are attributable to automatic association on its own, and if you ask me to split them out I cannot.
+
 ### Framework mapping
 
-**Designs.** Centralised state transition framework, parallel post processing, and automatic association and dissociation.
+**Designs.** A state machine over questions and documents, automatic association and dissociation, and parallel post processing.
 **Delivers.** Shipped and carrying live regulatory volume.
 **Operates.** Continuing production ownership rather than handover after delivery.
 **Achieves.** Five million euros contributed, forty thousand operations automated.
 
 ### So what
 
-Forty thousand operations that no analyst had to do, on a record that stays accurate on its own rather than because somebody remembered to tidy it.
+Forty thousand operations that no analyst had to do, on a record that stays accurate on its own rather than because somebody remembered to tidy it. And every artificial intelligence result in sections 5 and 6 is only as trustworthy as the state underneath it, which is the part I own.
 
 ---
 
@@ -754,7 +778,7 @@ On 11 June 2026 I presented a session in the business unit's knowledge sharing s
 - It was scheduled for an hour and ran **1 hour 24 minutes**, because the questions kept coming.
 - Average attendance time was **33 minutes**, on a session where people can drop out silently at any point.
 - I presented for **57 minutes** of it.
-- It was **recorded**, and the recording and transcript are available on the internal wiki alongside the framework documentation, so it keeps working after the day.
+- It was **recorded**. The recording and the transcript sit on the internal wiki alongside the framework documentation, so the session keeps working after the day. Recording: [LINK: 11 Jun 2026 session recording]. Transcript: [LINK: session transcript].
 
 The audience had already been given a session on the equivalent Python tooling, so this one had to answer the obvious question, which is why we are doing this in Java at all. That is the same argument as in section 2, made to the engineers who would have to live with the answer rather than to management.
 
@@ -823,7 +847,7 @@ Worked with me directly on the artificial intelligence initiative, and observed 
 ### Chris Ashley
 **Director. Conduct and Control Risk, Corporate Bank and Investment Bank, Operations and Controls.**
 
-Worked with me on the initial build of the documents and validity platform described in section 8.
+Worked with me on the initial build of the documents and state platform described in section 8.
 
 **Note on the 2025 feedback.** The panel asked for one sponsor from technology and one from outside Client Life Cycle Management. Tong Su and Lalitha Lalwani are both technology, from the Chief Technology Office. Marco Luebbers and Chris Ashley are both outside my area, in Operations and Controls. That covers both requirements.
 
@@ -881,10 +905,11 @@ The target for this level is most dimensions at level three, described as skille
 | 3 critical, 10 important | Rule contradictions found and resolved | Determinism release |
 | 30 to 60 minutes to seconds | Analyst wait for a calculation result | Messaging rebuild |
 | 500,000 a day | Messages processed in state validation | Messaging rebuild |
-| 5 million euros | Savings contributed to | Documents and validity platform |
-| 40,000 plus | Document operations with no human involvement | Documents and validity platform |
+| 5 million euros | Savings contributed to | Documents and state platform |
+| 40,000 plus | Document operations with no human involvement | Documents and state platform |
 | 140 attended | Business unit knowledge sharing session I presented, 11 Jun 2026 | Session attendance report |
 | 1h 24m | That session's actual length, against a scheduled hour | Same report |
+| 57m 42s | My share of that session as presenter | Session recording and transcript, on the wiki |
 | 548 tests in 71 files | Nexus AI Studio front end test suite, 545 passing locally | Repository, run 5 Sep 2026 |
 | 57 commits | Nexus AI Studio repository, 31 May to 26 Aug 2026 | Repository |
 | ~20,600 lines, 55 components | Nexus AI Studio front end size | Repository |

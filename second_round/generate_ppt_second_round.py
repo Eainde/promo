@@ -211,7 +211,7 @@ add_shape_box(s, 4.75, 1.5, 3.85, 0.55, DB_BLUE, "Nexus AI Studio",
               font_size=15, font_color=WHITE, bold=True)
 add_bullet_list(s, 4.9, 2.18, 3.6, 2.45, [
     "A live picture of every workflow, that lights up as it runs",
-    "Change the instructions the AI follows without a software release",
+    "Full prompt management. Version, compare side by side, test and publish the AI instructions, with no software release",
     "One dependency and one setting. Nothing for a team to build",
 ], font_size=13)
 add_shape_box(s, 8.8, 1.5, 3.85, 0.55, DB_BLUE, "PromptLint Quality Gate",
@@ -223,18 +223,18 @@ add_bullet_list(s, 8.95, 2.18, 3.6, 2.45, [
 ], font_size=13)
 add_metric(s, 0.7, 4.85, 3.85, "A day  ➔  An hour", "Time to build an agent",
            metric_size=23)
-add_metric(s, 4.75, 4.85, 3.85, "140 people",
-           "Came to my session on it. Recorded, and still used", metric_size=23)
+add_metric(s, 4.75, 4.85, 3.85, "Presented at RCP level",
+           "140 attended my session. Recorded, and still used", metric_size=23)
 add_metric(s, 8.8, 4.85, 3.85, "Two live workflows",
            "Both running on this framework", metric_size=23)
 add_textbox(s, 0.7, 6.3, 11.95, 0.8,
-            "I taught it to the unit, and the Innovation Office is reviewing it bank-wide. But a platform nobody uses is worth nothing, so I went and used it too. The next two slides are what came out.",
+            "Multiple teams across RCP now build on this framework. But a platform nobody uses is worth nothing, so I went and used it too. The next two slides are what came out.",
             font_size=15, italic=True, color=ACCENT_BLUE)
 
 # 4. SENIOR MANAGER WORKFLOW, AFTER GO-LIVE
 s = blank()
-slide_title(s, "Live Result: Finding a Client's Senior Managers",
-            "FIRST PRODUCTION AI WORKFLOW IN THE BUSINESS UNIT  |  NAMED IN THE NATIONAL PRESS")
+slide_title(s, "Finding the Senior Managers Who Run a Client",
+            "FIRST AI WORKFLOW IN PRODUCTION. I DESIGNED IT AND WROTE EVERY PROMPT.  |  ON MY PLATFORM")
 before_after(s, 1.40, [
     "Analysts read document after document by hand to find who runs a client",
     "Each name checked across several systems, then tested against policy",
@@ -251,10 +251,10 @@ add_metric(s, 8.8, 4.05, 3.85, "57% cheaper",
            "€19.87 to €8.51 per case", height=1.25, metric_size=26)
 add_shape_box(s, 0.7, 5.45, 11.95, 1.7, PALE_BLUE)
 add_textbox(s, 0.95, 5.52, 11.5, 0.29,
-            "One of only three AI applications Deutsche Bank showed the national press, June 2026. Named in The Hindu.",
+            "Demonstrated to the national media at the bank's Bank on Tech showcase in Bengaluru, India, June 2026. Covered in the national press.",
             font_size=12.5, bold=True, color=DB_BLUE)
 add_textbox(s, 0.95, 5.83, 11.5, 0.29,
-            "Published bank-wide on the internal network, August 2026. Rated 4.6 out of 5 by 66 readers.",
+            "Published bank-wide on the internal network, August 2026.",
             font_size=12.5, bold=True, color=DB_BLUE)
 add_textbox(s, 0.95, 6.14, 11.5, 0.56,
             "“This is the first production step towards an AI-augmented, end to end process that is faster, more accurate "
@@ -266,8 +266,8 @@ add_textbox(s, 0.95, 6.72, 11.5, 0.33,
 
 # 5. OWNERSHIP AND CONTROL
 s = blank()
-slide_title(s, "Live Result: Who Owns and Controls a Client",
-            "SECOND PRODUCTION AI WORKFLOW  |  I OWN THIS ONE END TO END  |  LIVE FOR 100 USERS")
+slide_title(s, "Finding the Ownership Hierarchy Behind a Client",
+            "THE HARDER ONE. I OWN IT END TO END.  |  SECOND AI WORKFLOW IN PRODUCTION  |  LIVE FOR 100 USERS")
 before_after(s, 1.40, [
     "An analyst traces ownership up through layers of holding companies and trusts",
     "Documents in several languages, group policy plus every country's own rules",
@@ -279,7 +279,7 @@ before_after(s, 1.40, [
 ], height=1.75)
 add_metric(s, 0.7, 4.05, 3.85, "Maker and checker",
            "A second agent scores every result", height=1.25, metric_size=22)
-add_metric(s, 4.75, 4.05, 3.85, "256 automated tests",
+add_metric(s, 4.75, 4.05, 3.85, "265 automated tests",
            "I treat AI instructions as code", height=1.25, metric_size=22)
 add_metric(s, 8.8, 4.05, 3.85, "Same case, same answer",
            "Measured it first, then fixed it", height=1.25, metric_size=22)
@@ -300,31 +300,33 @@ add_bullet_list(s, 7.1, 5.9, 5.4, 1.15, [
 
 # 6. FOUNDATIONS
 s = blank()
-slide_title(s, "The Foundations Underneath",
-            "DESIGNED, BUILT AND STILL OWNED IN PRODUCTION")
-add_shape_box(s, 0.7, 1.5, 5.85, 0.6, DB_BLUE,
-              "Messaging Infrastructure", font_size=17,
+slide_title(s, "What Both of Those Workflows Stand On",
+            "DOCUMENTS AND STATE. DESIGNED, BUILT AND STILL OWNED IN PRODUCTION")
+add_shape_box(s, 0.7, 1.5, 7.5, 0.6, DB_BLUE,
+              "Documents and the State Machine", font_size=17,
               font_color=WHITE, bold=True)
-add_bullet_list(s, 0.9, 2.25, 5.5, 2.4, [
-    "Could not handle load. Analysts waited 30 to 60 minutes for results",
-    "Messages lost permanently on any outage. Nobody could see where work was stuck",
-    "I rebuilt it. Automatic recovery, and every message traceable end to end",
+add_bullet_list(s, 0.9, 2.25, 7.2, 2.4, [
+    "Analysts linked documents to compliance questions by hand. I automated it",
+    "I automated the unlinking too, when a newer document supersedes an older one. "
+    "A missing document is visible. A stale one still looks current to an auditor",
+    "My state machine works out where every question and every document stands",
+    "Both AI workflows only see work it released, and only trust documents it marked good",
 ], font_size=15)
-add_shape_box(s, 6.9, 1.5, 5.75, 0.6, DB_BLUE,
-              "Documents and Validity", font_size=17,
+add_shape_box(s, 8.4, 1.5, 4.25, 0.6, DB_BLUE,
+              "Messaging", font_size=17,
               font_color=WHITE, bold=True)
-add_bullet_list(s, 7.1, 2.25, 5.4, 2.4, [
-    "Analysts linked documents to compliance questions by hand, then rechecked",
-    "I built automatic linking and unlinking, with no human in the loop",
-    "Rebuilt the engine that decides whether an answer is still valid",
+add_bullet_list(s, 8.6, 2.25, 3.95, 2.4, [
+    "The old infrastructure could not cope. Analysts waited 30 to 60 minutes",
+    "I designed a new messaging library, including automatic retry when a message fails",
+    "The same work now completes in seconds",
 ], font_size=15)
-add_metric(s, 0.7, 4.85, 2.85, "30-60 min ➔ Seconds", "Analyst wait time",
+add_metric(s, 0.7, 4.85, 2.85, "€5 million", "Savings contributed to",
+           height=1.25, metric_size=21)
+add_metric(s, 3.75, 4.85, 2.85, "40,000+", "Document operations automated",
+           height=1.25, metric_size=21)
+add_metric(s, 6.8, 4.85, 2.85, "30-60 min ➔ Seconds", "Analyst wait time",
            height=1.25, metric_size=18)
-add_metric(s, 3.75, 4.85, 2.85, "500,000 a day", "Messages processed",
-           height=1.25, metric_size=21)
-add_metric(s, 6.8, 4.85, 2.85, "€5 million", "Savings contributed to",
-           height=1.25, metric_size=21)
-add_metric(s, 9.85, 4.85, 2.8, "40,000+", "Document operations automated",
+add_metric(s, 9.85, 4.85, 2.8, "500,000 a day", "Messages processed",
            height=1.25, metric_size=21)
 add_textbox(s, 0.7, 6.35, 11.95, 0.6,
             "I do not build and walk away. I was resolving production issues in the document platform this month.",
