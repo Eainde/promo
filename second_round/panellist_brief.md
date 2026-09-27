@@ -31,7 +31,9 @@ You have an hour with me, and then five minutes in front of the wider panel. Tho
 
 ## 1. The Case In One Page
 
-I am a Senior Engineer in the part of the bank that proves it knows who its clients really are. Before Deutsche Bank can take on a corporate client, it has to establish who owns that company, who runs it, and whether the paperwork stands up to a regulator. My team builds the platform that does that work. I have thirteen years in financial technology, at JP Morgan, HSBC, American Express and now here. I joined Deutsche Bank in March 2023.
+I am a Senior Engineer with thirteen years in financial technology, at JP Morgan, HSBC, American Express and now here. I joined Deutsche Bank in March 2023, in the part of the bank that proves it knows who its clients really are.
+
+Before Deutsche Bank can take on a corporate client, it has to establish who owns that company, who runs it, and whether the paperwork stands up to a regulator. My team builds the platform that does that work.
 
 **The six things worth remembering about me.**
 
