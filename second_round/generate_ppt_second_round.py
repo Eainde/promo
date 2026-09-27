@@ -164,37 +164,59 @@ add_textbox(s, 1, 5.5, 11.3, 0.5,
 # 2. ABOUT ME + MY PLATFORM
 s = blank()
 slide_title(s, "About Me, and What My Platform Does")
-add_shape_box(s, 0.7, 1.05, 5.85, 0.6, DB_BLUE,
-              "13 Years in Financial Technology", font_size=16,
+add_shape_box(s, 0.7, 1.1, 5.85, 0.5, DB_BLUE,
+              "13 Years in Financial Technology", font_size=15,
               font_color=WHITE, bold=True)
-add_bullet_list(s, 0.9, 1.8, 5.5, 1.6, [
+add_bullet_list(s, 0.9, 1.62, 5.5, 1.4, [
     "JP Morgan  ·  HSBC  ·  American Express  ·  Deutsche Bank",
     "Joined Deutsche Bank in March 2023",
     "Java  ·  Spring Boot  ·  Kafka  ·  AI  ·  Microservices",
-], font_size=15)
-add_shape_box(s, 6.9, 1.05, 5.75, 0.6, DB_BLUE, "My Roles",
-              font_size=16, font_color=WHITE, bold=True)
-add_bullet_list(s, 7.1, 1.8, 5.4, 1.6, [
+], font_size=14, space=6)
+add_shape_box(s, 6.9, 1.1, 5.75, 0.5, DB_BLUE, "My Roles",
+              font_size=15, font_color=WHITE, bold=True)
+add_bullet_list(s, 7.1, 1.62, 5.4, 1.4, [
     "AI lead for the business unit",
     "Technical authority for messaging and AI infrastructure",
     "Component Guardian. Every design and code approval goes through me",
-], font_size=15)
-add_shape_box(s, 0.7, 3.55, 11.95, 0.85, PALE_BLUE,
-              "Before the bank can take on a client, it has to prove it knows who that client really is. "
-              "Who owns them, who runs them, and whether the paperwork stands up.",
-              font_size=16, font_color=DARK_GRAY, bold=True, alignment=PP_ALIGN.CENTER)
-pipe = ["Document\narrives", "Linked to the right\ncompliance question",
-        "Validity\nchecked", "Ready for\nregulatory review"]
-xs = [0.74, 3.79, 6.84, 9.89]
-for x, label in zip(xs, pipe):
-    add_shape_box(s, x, 4.6, 2.7, 1.4, LIGHT_GRAY, label,
-                  font_size=15, font_color=DARK_GRAY, bold=True)
-for x in [3.44, 6.49, 9.54]:
-    add_textbox(s, x, 4.98, 0.35, 0.6, "→", font_size=22,
+], font_size=14, space=6)
+add_shape_box(s, 0.7, 3.15, 11.95, 0.5, DB_BLUE, "My Platform",
+              font_size=15, font_color=WHITE, bold=True)
+add_textbox(s, 0.7, 3.7, 11.95, 0.45,
+            "Before the bank takes on a client, it must prove who owns them, who runs them, "
+            "and that the paperwork stands up.",
+            font_size=15, italic=True, color=DARK_GRAY, alignment=PP_ALIGN.CENTER)
+pipe = [("1", "Document arrives", "Messaging I rebuilt"),
+        ("2", "Linked to the right question", "Automatic linking I built"),
+        ("3", "Validity checked", "State machine I built"),
+        ("4", "Ready for regulatory review", "Automatic unlinking I built")]
+xs = [0.7, 3.77, 6.84, 9.91]
+for x, (num, label, mine) in zip(xs, pipe):
+    box = add_shape_box(s, x, 4.3, 2.74, 1.3, PALE_BLUE)
+    tf = box.text_frame
+    tf.clear()
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = num
+    p.font.size = Pt(20)
+    p.font.bold = True
+    p.font.color.rgb = ACCENT_BLUE
+    p.font.name = "Calibri"
+    p.alignment = PP_ALIGN.CENTER
+    p2 = tf.add_paragraph()
+    p2.text = label
+    p2.font.size = Pt(15)
+    p2.font.bold = True
+    p2.font.color.rgb = DB_BLUE
+    p2.font.name = "Calibri"
+    p2.alignment = PP_ALIGN.CENTER
+    add_textbox(s, x, 5.68, 2.74, 0.4, mine, font_size=13, bold=True,
+                color=GREEN, alignment=PP_ALIGN.CENTER)
+for x in [3.44, 6.51, 9.58]:
+    add_textbox(s, x, 4.7, 0.33, 0.5, "→", font_size=22,
                 bold=True, color=ACCENT_BLUE, alignment=PP_ALIGN.CENTER)
-add_textbox(s, 0.7, 6.3, 11.95, 0.6,
-            "My work spans the full pipeline, and now the AI that reads the documents.",
-            font_size=15, italic=True, color=ACCENT_BLUE)
+add_shape_box(s, 0.7, 6.2, 11.95, 0.6, ACCENT_BLUE,
+              "And now AI agents read the documents, on Nexus AI, the framework I built",
+              font_size=15, font_color=WHITE, bold=True, alignment=PP_ALIGN.CENTER)
 
 # 3. AI PLATFORM
 s = blank()
