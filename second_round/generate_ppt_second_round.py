@@ -210,7 +210,7 @@ add_bullet_list(s, 0.85, 2.18, 3.6, 2.45, [
 add_shape_box(s, 4.75, 1.5, 3.85, 0.55, DB_BLUE, "Nexus AI Studio",
               font_size=15, font_color=WHITE, bold=True)
 add_bullet_list(s, 4.9, 2.18, 3.6, 2.45, [
-    "A live picture of every workflow, that lights up as it runs",
+    "A real-time picture of every workflow, that lights up as it runs",
     "Full prompt management. Version, compare side by side, test and publish the AI instructions, with no software release",
     "One dependency and one setting. Nothing for a team to build",
 ], font_size=13)
@@ -225,7 +225,7 @@ add_metric(s, 0.7, 4.85, 3.85, "A day  ➔  An hour", "Time to build an agent",
            metric_size=23)
 add_metric(s, 4.75, 4.85, 3.85, "Presented at RCP level",
            "140 attended my session. Recorded, and still used", metric_size=23)
-add_metric(s, 8.8, 4.85, 3.85, "Two live workflows",
+add_metric(s, 8.8, 4.85, 3.85, "Two workflows in production",
            "Both running on this framework", metric_size=23)
 add_textbox(s, 0.7, 6.3, 11.95, 0.8,
             "Multiple teams across RCP now build on this framework. But a platform nobody uses is worth nothing, so I went and used it too. The next two slides are what came out.",
@@ -236,13 +236,13 @@ s = blank()
 slide_title(s, "Finding the Senior Managers Who Run a Client",
             "FIRST AI WORKFLOW IN PRODUCTION. I DESIGNED IT AND WROTE EVERY PROMPT.  |  ON MY PLATFORM")
 before_after(s, 1.40, [
-    "Analysts read document after document by hand to find who runs a client",
-    "Each name checked across several systems, then tested against policy",
-    "77 minutes of manual work per case, and rework between preparers and reviewers",
+    "Analysts read every document by hand, one at a time, to find who runs a client",
+    "Each name checked across several systems, duplicates and country rules sorted out by hand",
+    "Cases passed back and forth between preparer and reviewer, and records updated by hand",
 ], [
-    "Agents identify the people, cross-check the records and file the evidence",
-    "Analysts still review the evidence and make the final decision",
-    "Built in five months with Operations, Policy, Data, Controls and Transformation",
+    "A team of ten AI agents, reading every document in parallel",
+    "They find the senior managers, merge duplicates and apply country-specific rules",
+    "Checker agents review every step, then results are matched to the client's existing records",
 ], height=1.75)
 add_metric(s, 0.7, 4.05, 3.85, "77 min  ➔  Under 10",
            "More than seven times faster", height=1.25, metric_size=23)
@@ -266,37 +266,30 @@ add_textbox(s, 0.95, 6.72, 11.5, 0.33,
 
 # 5. OWNERSHIP AND CONTROL
 s = blank()
-slide_title(s, "Finding the Ownership Hierarchy Behind a Client",
-            "THE HARDER ONE. I OWN IT END TO END.  |  SECOND AI WORKFLOW IN PRODUCTION  |  LIVE FOR 100 USERS")
+slide_title(s, "Finding Who Really Owns and Controls a Client",
+            "SECOND AI WORKFLOW IN PRODUCTION. I OWN IT END TO END.  |  ON MY PLATFORM  |  ABOUT 400 USERS")
 before_after(s, 1.40, [
-    "An analyst traces ownership up through layers of holding companies and trusts",
-    "Documents in several languages, group policy plus every country's own rules",
-    "Percentages worked out by hand. Slow, and hard to evidence to a regulator",
+    "An analyst reads documents in several languages and traces ownership by hand, layer by layer",
+    "Percentages worked out by hand, against group policy and each country's own rules",
+    "Conflicting documents and missing evidence, and a wrong owner is a regulatory problem",
 ], [
-    "One call returns the full structure, with a document quote behind every claim",
-    "Collapsed an earlier six-agent pipeline into a single call",
-    "Never guesses. Missing evidence is recorded as a gap, not filled in",
+    "AI reads every document, in any language, and maps the ownership chart layer by layer",
+    "Works out the percentages and identifies the ultimate owners under each country's rules",
+    "Conflicts and gaps flagged, never guessed. Every claim quoted from a document",
 ], height=1.75)
-add_metric(s, 0.7, 4.05, 3.85, "Maker and checker",
-           "A second agent scores every result", height=1.25, metric_size=22)
-add_metric(s, 4.75, 4.05, 3.85, "265 automated tests",
-           "I treat AI instructions as code", height=1.25, metric_size=22)
-add_metric(s, 8.8, 4.05, 3.85, "Same case, same answer",
-           "Measured it first, then fixed it", height=1.25, metric_size=22)
-add_shape_box(s, 0.7, 5.45, 5.85, 1.7, LIGHT_GRAY)
-add_textbox(s, 0.9, 5.56, 5.5, 0.32, "Partnership with the policy team",
-            font_size=14, bold=True, color=DB_BLUE)
-add_bullet_list(s, 0.9, 5.9, 5.5, 1.15, [
-    "Audited their rules clause by clause. Put 15 written questions back",
-    "Told them their own worked examples were wrong. They corrected them",
-], font_size=13, space=5)
-add_shape_box(s, 6.9, 5.45, 5.75, 1.7, LIGHT_GRAY)
-add_textbox(s, 7.1, 5.56, 5.4, 0.32, "Built for the regulator, not just the user",
-            font_size=14, bold=True, color=DB_BLUE)
-add_bullet_list(s, 7.1, 5.9, 5.4, 1.15, [
-    "Every assertion carries a verbatim quote from a document",
-    "Versioned releases. A change is a new version, never an edit in place",
-], font_size=13, space=5)
+add_metric(s, 0.7, 4.05, 3.85, "198 min  ➔  5 to 15",
+           "Analyst time per case, at least 13 times faster", height=1.25, metric_size=23)
+add_metric(s, 4.75, 4.05, 3.85, "71 people's work",
+           "Estimated analyst time freed each year", height=1.25, metric_size=24)
+add_metric(s, 8.8, 4.05, 3.85, "About 90%",
+           "Of the clients the bank checks, covered today", height=1.25, metric_size=26)
+add_shape_box(s, 0.7, 5.45, 11.95, 1.3, PALE_BLUE)
+add_textbox(s, 0.95, 5.56, 11.5, 0.34, "Why it matters to the bank",
+            font_size=15, bold=True, color=DB_BLUE)
+add_textbox(s, 0.95, 5.92, 11.5, 0.72,
+            "Corporate clients onboarded faster with the same team, and every ownership decision "
+            "can be shown to a regulator, document by document.",
+            font_size=15, color=DARK_GRAY)
 
 # 6. FOUNDATIONS
 s = blank()
@@ -326,10 +319,10 @@ add_metric(s, 3.75, 4.85, 2.85, "40,000+", "Document operations automated",
            height=1.25, metric_size=21)
 add_metric(s, 6.8, 4.85, 2.85, "30-60 min ➔ Seconds", "Analyst wait time",
            height=1.25, metric_size=18)
-add_metric(s, 9.85, 4.85, 2.8, "500,000 a day", "Messages processed",
+add_metric(s, 9.85, 4.85, 2.8, "1 million a day", "Messages processed",
            height=1.25, metric_size=21)
 add_textbox(s, 0.7, 6.35, 11.95, 0.6,
-            "I do not build and walk away. I was resolving production issues in the document platform this month.",
+            "I do not build and walk away. I still own the document platform in production and fix any issue that comes up.",
             font_size=15, italic=True, color=ACCENT_BLUE)
 
 # 7. BEYOND MY TEAM

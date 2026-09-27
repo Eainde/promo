@@ -1,6 +1,6 @@
 # VP Promotion Speech - Second Round
 
-Target: 7 minutes. 1,195 spoken words. Round 1 delivered 1,191 words in the same slot, so this is the same length as a speech that already fitted, and it leaves room for questions.
+Target: 7 minutes. 1,154 spoken words. Round 1 delivered 1,191 words in the same slot, so this is close to the length of a speech that already fitted.
 
 ---
 
@@ -15,7 +15,7 @@ Today I want to tell you about two things that are now running in production, an
 
 Two years ago, when the bank started talking seriously about artificial intelligence, our business unit had no capability of its own. Every team started from a blank page, one agent took a full day to build, and everybody rebuilt the same problems from scratch.
 
-I took that on. The team was leaning towards a Python-based solution. I steered us away. All our services, our infrastructure and our engineers are Java. A second language would have given us a parallel stack nobody could integrate or maintain. I made that case to technical management, and I convinced them.
+I took that on. The team was leaning towards a Python-based solution. I steered us away. All our services, our infrastructure and our engineers are Java. A second language would have given us a parallel stack nobody could integrate or maintain. I made the case for Java, and that is the direction we took.
 
 Then I built it. I researched it, proved the concept, designed the architecture, and delivered it single-handedly. It is called Nexus AI. Any team in our unit can now build a working agent in about an hour instead of a full day. Alongside it I built a quality gate that catches badly written AI instructions before they ever reach the model, the way a spell checker catches a typo before you send the email.
 
@@ -26,32 +26,22 @@ A framework nobody uses is worth nothing. So I went and used it.
 
 ## SECTION TWO. THE FIRST ONE, AND WHAT IT DID.
 
-The first thing I built on it identifies the senior managers responsible for running a client's organisation. Analysts used to do that by hand, reading document after document and checking each name across several systems.
+Every client has senior managers who run it, and the bank has to identify them. Analysts did that by hand, reading every document one at a time, checking each name across several systems, and sorting out duplicates and country rules themselves. Cases went back and forth between preparer and reviewer. It took seventy seven minutes per case.
 
-That work used to take seventy seven minutes per case. It now takes under ten. That is more than seven times faster, at over ninety nine and a half percent right first time, and an independent cost analysis put it at fifty seven percent cheaper per case.
+So I built the first AI workflow on my framework to do it. I designed the multi agent architecture, a team of ten AI agents, and I wrote every instruction that drives them. They read every document in parallel, find the senior managers, merge duplicates and apply country-specific rules. Checker agents review every step, and the results are matched to the client's existing records. The analyst reviews it and makes the final decision. I took it from nothing to production in five months.
 
-I designed the whole thing. The multi agent design is mine, and I wrote every instruction that drives it, working through the rules with the policy specialists. Nothing to live in five months.
-
-In June the bank held its annual technology showcase in India and demonstrated three artificial intelligence applications to the national press. This was one of the three, named in The Hindu.
-
-Then in August the bank published an article about it on its own internal network, headlined, and I am quoting, how artificial intelligence cut a key client onboarding step from seventy seven minutes to ten. Sixty six people rated it four point six out of five. The Co-Head of Operations and Controls for the Corporate and Investment Bank called it the first production step towards a faster, more accurate and more scalable process that keeps a human accountable for every risk decision.
-
-That is not me saying my work matters. That is the bank saying it.
+A case now takes under ten minutes. That is more than seven times faster, at over ninety nine and a half percent right first time, and fifty seven percent cheaper per case. In June it was one of only three AI applications the bank showed the national press in India, and it was named in The Hindu. In August the bank featured it on its own internal network, and readers rated it four point six out of five.
 
 
 ## SECTION THREE. THE SECOND ONE, AND THE HARDER ONE.
 
-The second one I own end to end, and it is a genuinely harder problem.
+The second one I own end to end, and it is a much harder problem.
 
-Regulation requires us to establish who ultimately owns and controls a corporate client. An analyst traces ownership upwards through layers of holding companies, funds and trusts, across documents in several languages, applying group policy and the rules of every country involved, and works out the percentages by hand.
+Regulation requires the bank to know who ultimately owns and controls every corporate client. An analyst read documents in several languages, traced ownership upwards layer by layer through holding companies, funds and trusts, and worked out the percentages by hand against group policy and the rules of every country involved. Documents conflicted, evidence was missing, and one case took over three hours. And getting an owner wrong is a regulatory problem, not an inconvenience.
 
-> ⚠ **PLACEHOLDER NUMBERS — collect and replace before delivery.** Three to verify: (1) manual minutes per case, (2) minutes now, (3) accuracy measure. Everything else in this section is sourced.
+So I designed the rules, the architecture, the tests and the deployment. The AI reads every document, in any language, maps the ownership chart layer by layer, works out the percentages and identifies the ultimate owners under each country's rules. Conflicts and gaps are flagged, never guessed, and every claim carries a quote from a document. It checks its own work against seventeen rules before any person sees it. Two hundred and sixty five automated tests make sure the same case gives the same answer this month as last month. That is what makes the speed safe.
 
-One case took an analyst about two hours. It now takes under fifteen minutes, and it has been live for a hundred users since August. Over ninety five percent of cases come back right first time.
-
-Getting an owner wrong on a client file is a regulatory problem, not an inconvenience, so speed on its own is worthless here. I designed it to mark its own homework against seventeen rules the policy team signed off before any person sees it, and to escalate to a human when the documents genuinely do not give an answer instead of inventing one. Two hundred and sixty five automated tests mean the same client case gives the same answer this month as it did last month. That is what makes the time saving safe to bank.
-
-And I did not just implement what the policy team handed me. I audited it clause by clause, put fifteen written questions back to them, and told them when their own worked examples were wrong. One had the ownership pointing the wrong way. Another had percentages that did not add up to a hundred. They corrected them.
+A case now takes five to fifteen minutes instead of over three hours. About four hundred users work with it today. It handles about ninety percent of the clients we check, and it frees an estimated seventy one people's worth of work every year.
 
 
 ## SECTION FOUR. WHAT IT ALL STANDS ON.
@@ -64,9 +54,9 @@ On top of that, linking documents to questions was manual. I automated the linki
 
 So both workflows only see work my state machine released, and only act on documents it marked good.
 
-That platform contributed five million euros in savings, and forty thousand document operations now run with no human. I still own it, and I was fixing production issues this month.
+That platform contributed five million euros in savings, and forty thousand document operations now run with no human. I still own it in production, and when an issue comes up, I am the one who fixes it.
 
-One layer down, all of it travels over messaging, which could not cope. Analysts waited half an hour for a result. I designed a new library with automatic retry, and the same work now takes seconds, at half a million messages a day.
+One layer down, all of it travels over messaging, which could not cope. Analysts waited half an hour for a result. I designed a new library with automatic retry, and the same work now takes seconds, at a million messages a day.
 
 
 ## SECTION FIVE. BEYOND MY TEAM.

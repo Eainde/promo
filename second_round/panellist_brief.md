@@ -41,9 +41,9 @@ I am a Senior Engineer in the part of the bank that proves it knows who its clie
 
 3. **The first workflow reached the national press, and then the bank's own front page.** It cut a client onboarding step from seventy seven minutes to under ten, runs at over ninety nine and a half percent right first time, and costs fifty seven percent less per case. In June 2026 the bank chose it as one of only three artificial intelligence applications it demonstrated to national media in India, and it was named in *The Hindu*. In August it was published on the bank's internal network and rated 4.6 out of 5 by sixty six readers, with the Co-Head of Operations and Controls for the Corporate Bank and Investment Bank quoted in it.
 
-4. **The second workflow I own end to end, and it is the harder one.** It works out who ultimately owns and controls a corporate client, tracing through layers of holding companies, funds and trusts across documents in several languages. It has been live for a hundred users since August 2026. There are two hundred and sixty five automated tests on it, because I treat the instructions we give artificial intelligence as production code rather than as prose.
+4. **The second workflow I own end to end, and it is the harder one.** It works out who ultimately owns and controls a corporate client, tracing through layers of holding companies, funds and trusts across documents in several languages. It cut analyst time per case from 198 minutes to between five and fifteen, and management presented it to the board in September 2026 as freeing an estimated seventy one people's worth of work a year. It is in use by about four hundred users since October 2026. There are two hundred and sixty five automated tests on it, because I treat the instructions we give artificial intelligence as production code rather than as prose.
 
-5. **Both of those workflows stand on a platform I built, and I still own it.** At the centre of our documents platform is a state machine I built. It calculates the state of every compliance question and of every document, which is what decides when a question is ready to be worked and whether a document can be relied on as evidence. On top of it I built automatic association of documents to the questions they answer, and automatic dissociation when a newer document supersedes an older one. Both live workflows only see work that state machine released, and only act on documents it marked good. The platform has contributed five million euros in savings and over forty thousand document operations with no human involvement. I was fixing production issues in it this month. Underneath all of that, our messaging could not handle load and lost messages permanently on any outage, so I designed a new messaging library with automatic retry. Analyst wait times went from thirty to sixty minutes down to seconds, and it now carries half a million messages a day.
+5. **Both of those workflows stand on a platform I built, and I still own it.** At the centre of our documents platform is a state machine I built. It calculates the state of every compliance question and of every document, which is what decides when a question is ready to be worked and whether a document can be relied on as evidence. On top of it I built automatic association of documents to the questions they answer, and automatic dissociation when a newer document supersedes an older one. Both live workflows only see work that state machine released, and only act on documents it marked good. The platform has contributed five million euros in savings and over forty thousand document operations with no human involvement. I still support it in production and fix issues as they come up. Underneath all of that, our messaging could not handle load and lost messages permanently on any outage, so I designed a new messaging library with automatic retry. Analyst wait times went from thirty to sixty minutes down to seconds, and it now carries a million messages a day.
 
 6. **I contribute outside the bank as well as inside it.** I contributed a new integration module to LangChain4j, the open source Java framework our artificial intelligence platform is built on.
 
@@ -56,9 +56,12 @@ I am a Senior Engineer in the part of the bank that proves it knows who its clie
 | Cost of that workflow | 19.87 euros per case | 8.51 euros per case, 57% lower | Cost analysis presented by a Managing Director |
 | Building an artificial intelligence agent | A full working day | About one hour | Nexus AI adoption across the unit |
 | Analyst wait for a calculation result | 30 to 60 minutes | Seconds | Messaging rebuild |
-| Message throughput | Daily backlogs | 500,000 messages a day | Messaging rebuild |
+| Message throughput | Daily backlogs | 1,000,000 messages a day | Messaging rebuild |
 | Document handling | Manual linking by analysts | 40,000 plus operations with no human involved | Documents and state platform |
 | Savings contributed to | | 5 million euros | Documents and state platform |
+| Working out who owns a client | 198 minutes of analyst time per case | 5 to 15 minutes | Management update to the board, Sep 2026 |
+| Capacity freed by that workflow | | 71 people's worth of work a year, estimated | Same board update |
+| Client cases that workflow covers | | About 90% | Same board update |
 
 **What I am asking you to conclude.** That I operate at the level the Vice President and Senior Engineer role describes. I set technical direction for a business unit rather than for a team, I own solution design and not just delivery, I partner with the business rather than take orders from it, and I have production evidence rather than proposals.
 
@@ -374,7 +377,7 @@ Without this, the only way to discover that an instruction had degraded was for 
 
 ---
 
-## 5. Live Result One, Finding A Client's Senior Managers
+## 5. Finding The Senior Managers Who Run A Client
 
 ### The problem
 
@@ -382,7 +385,7 @@ For every new client relationship, the bank has to identify and verify the senio
 
 ### What was built
 
-A workflow of ten agents across five waves, each substantive agent paired with a critic agent that reviews its output. The agents identify the relevant individuals in the documents, normalise and de-duplicate names, classify them against policy, compare the result against what the platform already holds, and answer the related compliance questions. Analysts still review the evidence and make the final decision. Human accountability is preserved by design, not by omission.
+A workflow of ten agents across five waves, each substantive agent paired with a critic agent that reviews its output. The agents read every document in the case in parallel, identify the relevant individuals, normalise and de-duplicate names, classify them against policy with country-specific rules for seven jurisdictions, compare the result against what the platform already holds to produce who to add, who to remove and who is confirmed, and answer the related compliance questions. Analysts still review the evidence and make the final decision. Human accountability is preserved by design, not by omission.
 
 It runs on Nexus AI.
 
@@ -392,7 +395,7 @@ It runs on Nexus AI.
 
 This was a cross functional delivery under the Corporate Bank and Investment Bank Know Your Customer Operations artificial intelligence acceleration programme. Know Your Customer specialists defined the business and policy logic. Operations, Technology, Data, Policy, Controls and Transformation all contributed. Live case testing and user feedback shaped the final version. It went from nothing to production in five months. The bank wide article credits the programme and the technology teams, and does not name me.
 
-**What is mine, and what I will defend under questioning:** I built the framework every one of those agents runs on. I delivered the first agentic workflow in the business unit, which is this one. Without the framework there was no vehicle for this work, and the alternative was ten agents hand wired by different people in different styles with no shared guardrails, no shared observability and no versioned prompts.
+**What is mine, and what I will defend under questioning:** I built the framework every one of those agents runs on. I designed the multi agent architecture and wrote every instruction the agents follow. I delivered the first agentic workflow in the business unit, which is this one. Without the framework there was no vehicle for this work, and the alternative was ten agents hand wired by different people in different styles with no shared guardrails, no shared observability and no versioned prompts.
 
 **What is not mine:** the policy logic, the operational design, the programme, and the headline result as a whole. If asked "did he do this on his own", the correct answer is no, and the reason that is the correct answer is that a workflow like this one cannot be done on one's own. I would rather be judged on having built the thing that made it possible and on having partnered well, than on a claim that will not survive scrutiny.
 
@@ -454,7 +457,7 @@ The cost and savings analysis was presented to management by Marco Luebbers, a M
 
 **At go live, 10 July 2026.** On the week of go live, Ross Mackenzie wrote to the whole accelerator team. He called it "a monumental delivery in the evolution of Deutsche Bank's KYC process, the first agentic workers, that are delivering at a higher level of accuracy and efficiency than could be achieved by human effort", and described it as "a case study in partnership between Technology and Operations". The mail carried the first production numbers, after two days: 258 files processed, maker level accuracy at 91 percent, and no material production issues. Note that the 91 percent there and the over 99.5 percent right first time in the August article are different measures taken seven weeks apart, and the gap between them is the post go live tuning, not a restatement.
 
-Two things about that mail. It was addressed to the accelerator team, not to me personally, and I am one of roughly fifty recipients, so I do not present it as individual recognition. What it does evidence is that the Co-Head of Operations and Controls was engaged with this delivery at go live, and that he closed the mail with "Beneficial Ownership next!", which is the same senior sponsor naming the workflow in section 6 as the next thing the bank wanted. The two live results in this document are a sequence, not two unrelated projects.
+Two things about that mail. It was addressed to the accelerator team, not to me personally, and I am one of roughly fifty recipients, so I do not present it as individual recognition. What it does evidence is that the Co-Head of Operations and Controls was engaged with this delivery at go live, and that he closed the mail with "Beneficial Ownership next!", which is the same senior sponsor naming the workflow in section 6 as the next thing the bank wanted. The two workflows in this document are a sequence, not two unrelated projects.
 
 ### Screenshots and links
 
@@ -494,7 +497,7 @@ This is the proof that the framework was worth building. A platform with no user
 
 ---
 
-## 6. Live Result Two, Who Owns And Controls A Client
+## 6. Finding Who Really Owns And Controls A Client
 
 **This is the section to spend the most time on with me. It is the hardest problem I have worked on, I own it end to end, and it is where the engineering is most distinctive.**
 
@@ -506,7 +509,22 @@ It is slow, it varies between analysts, and it is difficult to evidence to a reg
 
 ### What I personally did
 
-All of it. I own this workflow end to end. The rule set, the architecture, the test suite, the deployment tooling and the partnership with the policy team are mine. The source repository holds ninety two commits, all of them mine, from 3 June to 4 September 2026. It has been live in production for a controlled group of one hundred users since August 2026.
+All of it. I own this workflow end to end. The rule set, the architecture, the test suite, the deployment tooling and the partnership with the policy team are mine. The source repository holds ninety two commits, all of them mine, from 3 June to 4 September 2026. It went into live production testing with a controlled group of seventy users on 17 August 2026, and expanded to about four hundred users on 5 October 2026.
+
+### Impact, as presented to the board
+
+In September 2026 the Client Lifecycle Transformation programme presented its artificial intelligence initiatives to the board. Ownership is one of seven, and its figures are:
+
+- **Analyst time per case, from 198 minutes to between five and fifteen.** The artificial intelligence reads the documents, builds the ownership structure and chart, identifies potential intermediate and ultimate beneficial owners, performs the ownership calculations and finds gaps, conflicts and exceptions. The maker keeps discrepancy resolution, the decision and approval, and the checker still performs the final check. That is at least thirteen times faster.
+- **An estimated seventy one people's worth of work a year (full-time equivalent).** This is the ownership share of a programme target of more than two hundred and fifty. For comparison, the senior manager workflow in section 5 is estimated at twenty two. The board slide footnotes these as estimates built on assumptions and point in time data, and I present them the same way.
+- **About ninety percent of client cases in scope today.** Four entity types, private entity, parent exchange, bank recognised regulated entity and listed entity, cover roughly ninety percent of the perimeter. The remaining ten percent spans more than eighteen hundred entity types and is future scope.
+- **Next step is integration with the group beneficial ownership calculator,** a central, deterministic, policy driven service. In the target state the artificial intelligence prepares the inputs, the calculator determines the owners, and human oversight remains. That split is the same principle as decision two below. The model extracts evidence, it does not make the policy call.
+
+**Attribution, stated plainly.** The board deck credits the programme, not me by name. What I claim is that the workflow producing these numbers is the one I own end to end, rule set, architecture, tests and deployment.
+
+![Management update to the board, September 2026. Ownership demonstration, previous process against future process. Average maker time per case 198 minutes today, five to fifteen minutes with artificial intelligence.](../framework/IMG_4828.jpg)
+
+![Management update to the board, 22 September 2026 progress. Seven artificial intelligence use cases. Ownership live production testing with seventy users at ninety percent perimeter coverage, expanding to 420 users on 5 October, estimated seventy one full-time roles of savings.](../framework/IMG_4829.jpg)
 
 ### The design decisions I owned
 
@@ -591,7 +609,7 @@ I would rather give you these than have you find them.
 - **No continuous integration on this repository.** The tests run manually. This is the gap I am least comfortable with and the next thing I am fixing.
 - **The test suite is not in version control**, because the directory is excluded repository wide. That needs correcting.
 - **The deployment script is executed by hand**, not through a pipeline.
-- **No published volume or service level figures yet.** The rollout is deliberately limited to one hundred users, and I would rather report nothing than report a number from a controlled group as though it were a production rate.
+- **No measured production volume or service level figures yet.** The time and capacity figures above are the programme's estimates, presented to the board as estimates. The rollout only expanded to about four hundred users on 5 October, and I would rather not present an early figure as though it were a measured production rate.
 
 The honest position is that the instruction engineering and the testing on this workflow are considerably more mature than the delivery pipeline around it, and I know it.
 
@@ -605,12 +623,12 @@ Source repository: [LINK: ownership-prompts repository] (92 commits, all mine, 3
 
 **Thinks.** Collapsed a six agent pipeline into one call by recognising the problem was not separable. Recognised that non determinism, not accuracy, was the real defect behind the user complaints, and built a measurement harness before attempting a fix.
 **Designs.** Sixteen gate processing order, thirty seven field output contract, twenty two rung precedence ladder, and a maker checker loop with explicit dispute semantics.
-**Delivers.** The second agentic workflow in the business unit to reach production, live for one hundred users.
+**Delivers.** The second agentic workflow in the business unit to reach production, in use by about four hundred users.
 **Operates.** Versioned deployment, generated and verified release artefacts, a verification checklist where every item was added because it caught a real bug.
-**Controls.** Evidence only and fail closed by design. Two hundred and fifty six tests preventing rule drift. Every assertion traceable to a document quote for audit.
+**Controls.** Evidence only and fail closed by design. Two hundred and sixty five tests preventing rule drift. Every assertion traceable to a document quote for audit.
 **Engages.** Clause by clause partnership with the policy team, fifteen written questions, four rounds resolved in a day.
 **Influences.** Disputed incorrect business supplied examples and had them corrected. Refused to implement an unspecifiable rule and explained why.
-**Achieves.** Replaced manual ownership tracing. Three critical and ten important rule contradictions found and resolved before they reached production.
+**Achieves.** Analyst time per case from 198 minutes to five to fifteen, an estimated seventy one people's worth of work a year, as presented to the board. Three critical and ten important rule contradictions found and resolved before they reached production.
 
 ### So what
 
@@ -668,7 +686,7 @@ Each outcome above, and what proves it.
 | Wait went from 30 to 60 minutes to seconds | Consumer lag chart for the state and validity consumer group, four weeks either side of go live on [DATE] | [DATA: monitoring dashboard screenshot] |
 | Backlogs eliminated | Same chart. Daily lag peaks before, flat line after | [DATA: same screenshot] |
 | Messages no longer lost | Retry table counts over [N] months: failures persisted, recovered on retry, exhausted after max retries | [DATA: query on retry table] |
-| 500,000 messages a day | Topic throughput, thirty day view | [DATA: broker metrics screenshot] |
+| 1,000,000 messages a day | Topic throughput, thirty day view | [DATA: broker metrics screenshot] |
 | Adopted across the unit | [N] services in [N] teams declare `com.db.clm.kyc:clm-kafka-retry`, [N] released versions | [DATA: artifact repository dependents or code search] |
 | Tracing found hidden bugs | [N] production defects found through lifecycle tracing, e.g. [TICKET]: [one line on what the trace showed] | [LINK: tickets] |
 | I designed and built it | Commit history, [N] of [N] commits mine, design document | [LINK: repository], [LINK: design doc] |
@@ -688,7 +706,7 @@ Source repository: [LINK: clm-kafka-phoenix-retry repository]
 **Operates.** Full message lifecycle tracing, and production bugs found that were previously undetectable.
 **Controls.** Distributed locking, configurable policy, and a complete audit trail of retries.
 **Influences.** Adopted across the unit rather than mandated, because it was easier to use than to avoid.
-**Achieves.** Thirty to sixty minutes down to seconds, half a million messages a day.
+**Achieves.** Thirty to sixty minutes down to seconds, a million messages a day.
 
 ### So what
 
@@ -702,7 +720,7 @@ An analyst who waited an hour for a result did something else and came back. Tha
 
 A client review asks a set of compliance questions, and every answer has to be evidenced by documents. Analysts linked documents to the questions they answered by hand, and re-checked by hand whether an existing answer still held. It was slow and it was the sort of repetitive work where mistakes are both easy and consequential.
 
-This is also the platform the two live results in sections 5 and 6 stand on, which is why it is here and not in an appendix.
+This is also the platform the two workflows in sections 5 and 6 stand on, which is why it is here and not in an appendix.
 
 ### What I personally did
 
@@ -710,7 +728,7 @@ I built the state machine at the centre of the platform. It calculates the state
 
 On top of that I designed and built automatic association of documents to questions on upload, and automatic dissociation when a newer valid document supersedes an older one. The validity calculation had grown scattered across the codebase, and I consolidated it into a single state transition framework. I removed the post processing bottleneck with a parallel processing model.
 
-I still own this platform. **I was resolving production issues in it this month**, on documents arriving from an external credit reference source and on automatic association behaviour in the fulfilment interface.
+I still own this platform. **I still support it in production and resolve issues as they come up**, most recently on documents arriving from an external credit reference source and on automatic association behaviour in the fulfilment interface.
 
 ### Why the two live workflows depend on this
 
@@ -740,7 +758,7 @@ Post processing was the throughput bottleneck. I moved it to a parallel model, w
 
 - Over forty thousand document operations completed with no human involvement.
 - Carrying live regulatory volume for every client review on the platform.
-- Still owned in production, with active issue resolution this month, on documents from an external credit reference source and on association behaviour in the fulfilment interface.
+- Still owned in production, with ongoing issue resolution, most recently on documents from an external credit reference source and on association behaviour in the fulfilment interface.
 - Chris Ashley, Director, worked with me on the initial build of this platform and is one of my endorsers.
 
 **On attribution.** That operations figure describes the documents and state platform as a whole. I am not claiming it for automatic association on its own, and if you ask me to split it out I cannot.
@@ -879,7 +897,7 @@ The target for this level is most dimensions at level three, described as skille
 | **Thinks** | Reversed a technology direction by argument. Collapsed a six agent pipeline into one call because the problem was not separable. Recognised non determinism as the real defect behind user complaints and built the measurement before the fix |
 | **Engages** | Five month cross functional delivery with Operations, Policy, Data, Controls and Transformation. Clause by clause partnership with the policy team, fifteen written questions, four rounds in a day. Open source contribution. Mentoring through pairing and review |
 | **Influences** | Convinced technical management to change language direction for the unit. Framework adopted unit wide and under review bank wide. Coding standards adopted everywhere. Disputed the business's own worked examples and had them corrected |
-| **Achieves** | 77 minutes to under 10. Over 99.5% right first time. 57% cheaper. A day to an hour to build an agent. 30 to 60 minutes down to seconds. 500,000 messages a day. 5 million euros contributed |
+| **Achieves** | 77 minutes to under 10. Over 99.5% right first time. 57% cheaper. A day to an hour to build an agent. 30 to 60 minutes down to seconds. 1,000,000 messages a day. 5 million euros contributed |
 
 ## The four technical capabilities
 
@@ -887,7 +905,7 @@ The target for this level is most dimensions at level three, described as skille
 |---|---|
 | **Designs** | Two tier framework architecture designed from nothing. Sixteen gate processing order, thirty seven field contract, twenty two rung precedence ladder, maker checker with dispute semantics. Centralised state transition framework. Cluster safe retry architecture |
 | **Delivers** | Two production workflows, a framework, a quality analyser, a retry library, a messaging observability layer, and an open source module |
-| **Operates** | Full observability across both framework tiers and both messaging libraries. Versioned deployment with generated and verified artefacts. Continuing production issue resolution this month. Post go live cost optimisation |
+| **Operates** | Full observability across both framework tiers and both messaging libraries. Versioned deployment with generated and verified artefacts. Ongoing production support and issue resolution. Post go live cost optimisation |
 | **Controls** | Deterministic guardrails independent of the model. Evidence only and fail closed design. 265 tests preventing rule drift. Automated code quality gates unit wide. Complete audit trail on every agent execution |
 
 ---
@@ -908,7 +926,10 @@ The target for this level is most dimensions at level three, described as skille
 | 74% | Share of cost driven by document processing | Same analysis |
 | 8.51 to 5.61 euros, 34% | Expected effect of the model optimisation lever | Same analysis, not yet validated |
 | A day to about an hour | Time to build an agent, before and after Nexus AI | Framework adoption |
-| 100 users | Controlled rollout of the ownership workflow | Production status, Aug 2026 |
+| About 400 users, from 5 Oct 2026 | Ownership workflow rollout, expanded from a first group of 70 | Management update to the board, Sep 2026 |
+| 198 min to 5 to 15 min | Average maker time per ownership case, today against with AI | Same board update |
+| 71 people's work a year | Estimated capacity freed by the ownership workflow, of a programme target over 250 | Same board update, footnoted as estimates |
+| About 90% | Share of client cases covered by the four entity types in scope | Same board update |
 | 92 commits | Ownership workflow repository, all mine, 3 Jun to 4 Sep 2026 | Repository |
 | 265 collected, 264 pass and 1 expected failure | Automated tests on the ownership rule set | Test suite, run 5 Sep 2026 |
 | 1,597 lines, 26 rules, 43 sub sections | Ownership rule set size | Rule set |
@@ -919,7 +940,7 @@ The target for this level is most dimensions at level three, described as skille
 | 15 questions, 4 rounds in a day | Questions raised back to the policy team | Correspondence |
 | 3 critical, 10 important | Rule contradictions found and resolved | Determinism release |
 | 30 to 60 minutes to seconds | Analyst wait for a calculation result | Messaging rebuild |
-| 500,000 a day | Messages processed in state validation | Messaging rebuild |
+| 1,000,000 a day | Messages processed in state validation | Messaging rebuild |
 | 5 million euros | Savings contributed to | Documents and state platform |
 | 40,000 plus | Document operations with no human involvement | Documents and state platform |
 | 140 attended | Business unit knowledge sharing session I presented, 11 Jun 2026 | Session attendance report |
@@ -983,7 +1004,7 @@ Four ways, all designed in rather than added afterwards. Every assertion must ca
 This is the question worth asking him, and he has an answer. The extractor must re-extract rather than patch, must treat a review finding as a prompt to re-read a document rather than as evidence, and must formally dispute a finding the documents do not support and escalate to a human. Without those rules a mistaken reviewer causes exactly the fabrication the reviewer exists to prevent.
 
 **"What is weak in his work?"**
-He will tell you before you ask. The ownership workflow has no continuous integration, its test suite is not in version control, and its deployment script is run by hand. He has no published volume figures for it because the rollout is limited to a hundred users and he will not present a controlled group number as a production rate. See the end of section 6.
+He will tell you before you ask. The ownership workflow has no continuous integration, its test suite is not in version control, and its deployment script is run by hand. The time and capacity figures for it are the programme's estimates as presented to the board, not a measured production rate, because the rollout only expanded to about four hundred users on 5 October. See the end of section 6.
 
 **"Firmwide contribution was the gap in 2025. Is it fixed?"**
 The workflow he built the framework for was one of three applications Deutsche Bank chose to demonstrate to national media in India in June, and it was named in The Hindu. An open source contribution to LangChain4j under his own name. A framework adopted unit wide and now under review by the Chief Strategy and Innovation Office as a candidate bank wide standard. Coding standards that are the default in every service in the unit. Two hackathons, one as team lead, and the sustainability initiative.
@@ -995,7 +1016,7 @@ No, and he says so himself in section 5. The claim is narrow and it is checkable
 The framework carries two production workflows and is under review by the Innovation Office as a bank wide standard. He also taught it to the unit directly, in a knowledge sharing session on 11 June 2026 that 140 people attended and that overran by twenty four minutes on questions. It was recorded, so it is still working.
 
 **"Is he an engineer or a manager?"**
-An engineer. He writes the code, ships it, and owns it in production. He was fixing live issues in the document platform this month.
+An engineer. He writes the code, ships it, and owns it in production. He still supports the document platform in production and fixes issues as they come up.
 
 ---
 
@@ -1019,11 +1040,11 @@ Before that, in June, the bank held its annual technology showcase in Bengaluru 
 
 He is careful about that one, and I want to be careful too. That was a five month cross functional delivery. Policy, Operations, Data, Controls and Transformation all had a hand in it. What is his is the framework every agent in it runs on, and the fact that it was the first agentic workflow in the business unit. He told us that himself, before we asked.
 
-The second workflow he owns end to end, and it is the harder one. Working out who ultimately owns and controls a corporate client, tracing up through holding companies, funds and trusts, across documents in several languages. Live for a hundred users.
+The second workflow he owns end to end, and it is the harder one. Working out who ultimately owns and controls a corporate client, tracing up through holding companies, funds and trusts, across documents in several languages. Management presented it to the board in September as cutting analyst time per case from 198 minutes to five to fifteen, and freeing an estimated seventy one people's worth of work a year. About four hundred users today.
 
 Here is what makes him different as an engineer. Most people treat the instructions they give artificial intelligence as prose. He treats them as production code. Two hundred and fifty six automated tests on them. When users said the same case gave different answers on different days, he did not guess at a fix, he built a harness to measure the inconsistency first. And he did not simply implement what the policy team gave him. He audited their rules clause by clause, put fifteen written questions back to them, and told them two of their own worked examples were wrong. One had the ownership pointing the wrong way. They corrected them.
 
-Underneath all of it he rebuilt the messaging infrastructure. Analysts used to wait up to an hour for a result and messages were lost permanently on any outage. Now it is seconds, and half a million messages a day, fully traceable. He still owns the document platform and was fixing production issues in it this month.
+Underneath all of it he rebuilt the messaging infrastructure. Analysts used to wait up to an hour for a result and messages were lost permanently on any outage. Now it is seconds, and a million messages a day, fully traceable. He still owns the document platform in production and fixes issues as they come up.
 
 Inside the bank, he taught the whole thing to the business unit. He ran a knowledge sharing session in June that 140 people attended, which overran by nearly half an hour because of the questions, and it was recorded so it is still being used. He did not just build a platform and leave people to find it.
 

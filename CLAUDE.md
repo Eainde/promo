@@ -25,7 +25,7 @@ Two things changed since round 1 and drive the restructure:
 2. A **second production AI workflow** exists (ownership and control extraction), owned end to end, live for 100 users.
 
 Round 2 slide order (differs from round 1: About Me + My Platform merged, Documents & Validity + Messaging merged, freeing two slots for the new work):
-1. Title · 2. About Me + My Platform · 3. AI Platform (Nexus AI + PromptLint) · 4. Live Result: Senior Managers · 5. Live Result: Ownership & Control · 6. Foundations (Messaging + Documents) · 7. Beyond My Team · 8. Sponsors
+1. Title · 2. About Me + My Platform · 3. AI Platform (Nexus AI + PromptLint) · 4. Finding the Senior Managers · 5. Finding Who Owns and Controls a Client · 6. Foundations (Messaging + Documents) · 7. Beyond My Team · 8. Sponsors
 
 ## 2026 Pitch Constraints (from Peter Salerno email — see `promotion_email_instructions.md`)
 - **7-minute** verbal pitch + 3-5 min Q&A
@@ -52,7 +52,7 @@ Round 2 slide order (differs from round 1: About Me + My Platform merged, Docume
 - `last_year_work.md` — complete roles, responsibilities, and achievements used in 2025 attempt
 
 ### New Work (Since Last Promotion)
-- `new_work_kafka_library.md` — CLM Kafka Phoenix Retry Library + Spring Cloud Stream + Kafka observability. Reduced state calculation from 30-60 mins → seconds, 500K msgs/day, dbCLM-wide adoption
+- `new_work_kafka_library.md` — CLM Kafka Phoenix Retry Library + Spring Cloud Stream + Kafka observability. Reduced state calculation from 30-60 mins → seconds, 1M msgs/day (was 500K), dbCLM-wide adoption
 - `new_work_nexus_ai.md` — Nexus AI agentic workflow framework. Two-tier architecture (LangGraph + Agent Pipeline). Single-handedly designed. Agent creation reduced from 18-24 hours → 1 hour. dbCLM-wide
 - `new_work_prompt_lint.md` — PromptLint static quality analyzer for LLM prompts. 8 quality dimensions, no LLM calls, CI integration, JUnit API. Complements Nexus AI
 - `new_work_csm_workflow.md` — First agentic workflow in dbCLM. CSM (Client Senior Manager) identification & auto-answering. Built on Nexus AI. Replaces manual document reading
@@ -76,6 +76,7 @@ Round 2 slide order (differs from round 1: About Me + My Platform merged, Docume
 - `framework/nexus_studio_csm_workflow.png` ⭐ — **Nexus AI Studio rendering the real CSM production workflow** (copied from `RCP_session/studio_screenshot.png`). Dark theme, shows parallel extraction nodes, party-search subgraph, checkpoint state panel. The only Studio screenshot available, used in brief section 3
 - `framework/IMG_4785.jpg` ⭐ — **Ross Mackenzie congratulations email, 10-Jul-2026**, subject "KYC AI Accelerator - CSM Go-Live [Congratulations]". Sent by the Co-Head of Operations & Controls CB&IB to the whole accelerator team (~50 recipients, Akshay among them), not to Akshay personally. Confirms go-live, "a monumental delivery in the evolution of Deutsche Bank's KYC process", and day-2 production numbers: 258 files processed, 91 percent maker-level accuracy, no material production issues. Ends "Beneficial Ownership next!", which is senior sponsorship of the second workflow. ⚠️ Contains ~12 visible colleague names and one email address. **Use `framework/IMG_4785_cropped.jpg` in any document** (To: row, sender avatar and a background-window sliver removed), same guardrail as IMG_4771. Cited in brief section 5
 - `framework/IMG_4768-4770.jpg` ⭐ — **The Hindu article, 19-Jun-2026** (external national press). Deutsche India showed exactly 3 AI applications at Bank on Tech, Bengaluru, 18-Jun-2026. CSM was one of them, named as "AI Acceleration - client senior manager, a targeted initiative within Know Your Customer (KYC) processes". Quotes Denis Roux (CIO Investment Bank) and Gurumurthy Thiagarajan (Head of India tech centre, CIO People/Procurement/Legal). URL: `thehindu.com/business/deutsche-india-showcases-cutting-edge-ai-applications-that-speed-up-banking-operations/article71118785.ece`. Rotated upright and downscaled to 2200px. **Same attribution guardrail: names the initiative, not Akshay**
+- `framework/IMG_4826-4829.jpg` ⭐ — **Client Lifecycle Transformation board deck, 22-Sep-2026 update** (management to board). Ownership evidence: analyst time per case **198 min → 5-15 min** (IMG_4828), **71 FTE** estimated saving (IMG_4829, programme target >250 FTE across 7 AI use cases, CSM = 22 FTE, footnote says estimates), **~90% perimeter** (4 entity types), live testing 70 users since 17-Aug, expanding to ~400 (420 in IMG_4829) on 5-Oct, calculator integration 24-Sep (IMG_4826/4827). No money figure for ownership. Credits the programme, not Akshay by name. Slide 5 metrics now use these (replaced maker/checker, 265 tests, consistency)
 
 ## ECDF Framework (Evaluation Criteria)
 
@@ -129,7 +130,7 @@ Round 2 slide order (differs from round 1: About Me + My Platform merged, Docume
 
 ### Corrections
 - Document savings = **€5M** (not £25M — the £25M target was broader than just this work)
-- Kafka processes **half a million messages/day** (not tasks)
+- Kafka processes **1 million messages/day** (not tasks). Updated from half a million by Akshay, 27-Sep-2026, across slides, speech and brief
 - CSM AI cost per case = **€8.51** (the cost slide header says €8.54, but its own bullets and the arithmetic say €8.51: 19.87 − 8.51 = 11.36)
 
 ### Attribution Guardrail (round 2)
