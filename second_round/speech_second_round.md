@@ -1,6 +1,6 @@
 # VP Promotion Speech - Second Round
 
-Target: 7 minutes. 1,181 spoken words. Round 1 delivered 1,191 words in the same slot, so this is close to the length of a speech that already fitted.
+Target: 7 minutes. 1,200 spoken words. Round 1 delivered 1,191 words in the same slot, so this is close to the length of a speech that already fitted.
 
 Teleprompter format. One breath per line. Blank line = short beat. *(pause)* = full pause, look up at the panel. **Bold** = stress the word. `▶ SLIDE` headings = click to that slide. Word count excludes headings and *(pause)* lines.
 
@@ -68,14 +68,18 @@ On top of it I built **Nexus AI Studio**.
 It is a prompt management system,  
 so the people who own the policy can manage the AI's instructions directly,  
 without waiting for a software release.  
-And it draws every workflow as a picture that lights up while it runs.
+It also shows a visual representation of every agentic workflow as it runs.
 
 *(pause)*
 
-A framework nobody uses is worth nothing.  
-So I used it, on the first of those three questions.
+I presented all of this in a detailed session to all the teams across **RCP**, our wider business unit,  
+and multiple teams now build their own AI solutions on this framework.
 
-**Who runs the client.**
+*(pause)*
+
+And I built on it myself.  
+Which takes me back to the three questions I started with.  
+The first one, **who runs the client**.
 
 
 ## ▶ SLIDE 4. Who runs the client
@@ -215,9 +219,8 @@ My messaging and retry libraries are used across the business unit.
 Nexus AI is now being reviewed **bank-wide**.  
 And the shared coding standards I built are the default in every service in our unit.
 
-I taught Nexus AI and PromptLint to the wider organisation.  
-**A hundred and forty people** came to my session in June,  
-and the recording is still being used.
+The session I ran in June was recorded,  
+and that recording is still being used.
 
 I mentor engineers through pairing and code review.  
 I took part in the bank's hackathon in 2024,  

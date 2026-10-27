@@ -1032,7 +1032,7 @@ Two years ago his business unit had no artificial intelligence capability of any
 
 He changed the direction first. The unit was heading towards Python. He argued that every service, every pipeline and every engineer there is Java, and that a second stack would be a permanent cost nobody could carry. He took that to technical management and he won the argument. Then he built the framework himself. Research, proof of concept, architecture, code. Building an agent went from a day to an hour.
 
-There was a cost to choosing Java, which is that the ready made tooling for this is all Python. So he built that too. Nexus AI Studio draws every workflow as a picture that animates while it runs, and lets the people who own the policy compare and change the instructions the AI follows without waiting for a software release. He built it to the same interface as the industry standard tool it replaces, which is what makes the Java decision defensible rather than merely brave.
+There was a cost to choosing Java, which is that the ready made tooling for this is all Python. So he built that too. Nexus AI Studio shows a live visual representation of every agentic workflow as it runs, and lets the people who own the policy compare and change the instructions the AI follows without waiting for a software release. He built it to the same interface as the industry standard tool it replaces, which is what makes the Java decision defensible rather than merely brave.
 
 He then went and used it, which is the part that matters, because a framework nobody uses is worth nothing.
 

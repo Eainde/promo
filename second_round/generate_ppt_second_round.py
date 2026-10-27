@@ -232,7 +232,7 @@ add_bullet_list(s, 0.85, 2.18, 3.6, 2.45, [
 add_shape_box(s, 4.75, 1.5, 3.85, 0.55, DB_BLUE, "Nexus AI Studio",
               font_size=15, font_color=WHITE, bold=True)
 add_bullet_list(s, 4.9, 2.18, 3.6, 2.45, [
-    "A real-time picture of every workflow, that lights up as it runs",
+    "A live visual representation of every agentic workflow as it runs",
     "Full prompt management. Version, compare side by side, test and publish the AI instructions, with no software release",
     "One dependency and one setting. Nothing for a team to build",
 ], font_size=13)
