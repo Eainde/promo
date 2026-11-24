@@ -4,3 +4,19 @@ I am a Senior Engineer (AVP) in TDI, working on KYC/Compliance engineering and i
 Gemini remains in use for the current process, but it cannot serve this evaluation. The goal is to benchmark self-hosted open-weight models against it on cost, latency, accuracy and data control, and that requires the model files. Hosted services by design process data outside bank infrastructure, whereas the aim here is to assess a fully on-premise option. Open-weight models are distributed through Hugging Face, and no approved internal source provides them.
 
 Senior Engineer (AVP, TDI, KYC/Compliance) requesting access to https://huggingface.co/ to download open-weight small language models for local evaluation. A Gemini-based process already exists. The aim is to assess whether self-hosted SLMs can reduce cost and remove the need to share sensitive data with an external provider, and to explore their capabilities. Evaluation will use no client data and run on approved infrastructure. No approved internal source for the models exists. Project: [name/ID]. No wildcards (N/A). Line manager unchanged: Not Applicable.
+
+
+
+
+I have raised a CSO exception request for access to Hugging Face (https://huggingface.co/), reference RITM16200693. It is pending approval Could you please review and approve it?
+
+Summary of the request:
+- Exception type: Special Internet Access - HuggingFace.com
+- URL: https://huggingface.co/ (single URL, no wildcards)
+- Purpose: To download open-weight small language models (permissively licensed, under ~14B parameters) for local evaluation on approved infrastructure, for KYC/Compliance use cases such as document extraction, alert triage support and classification.
+- Business reason: We already run a process on Gemini. We want to assess whether self-hosted SLMs can reduce cost and remove the need to share sensitive data with an external provider, and to explore their capabilities.
+- Data handling: Evaluation will use no client or production data. Inference runs entirely within bank-controlled infrastructure.
+- Controls: Permissively licensed models only, safetensors format, checksum verification, and an isolated environment.
+
+Please let me know if you need any further information.
+
